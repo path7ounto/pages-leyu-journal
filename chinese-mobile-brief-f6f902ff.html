@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯 · 纯粹叙事</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f5f0;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", "Helvetica Neue", sans-serif;
+            line-height: 1.75;
+            color: #1e1e1e;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1f2e44 100%);
+            color: #e3e9f0;
+            padding: 5rem 1.5rem 3.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2.5rem;
+            background: linear-gradient(180deg, transparent, #f7f5f0);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 7vw, 4rem);
+            font-weight: 450;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.65rem;
+            color: #f2e9d0;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0.6rem auto 0;
+            opacity: 0.8;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            margin-top: 1.2rem;
+            padding: 0.25rem 1.2rem;
+            border: 1px solid rgba(255, 215, 140, 0.35);
+            border-radius: 40px;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            color: #dac29c;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 2.5rem 1.8rem 4rem;
+            background: #f7f5f0;
+        }
+
+        .article-title {
+            font-size: 1.95rem;
+            font-weight: 450;
+            margin-bottom: 0.45rem;
+            line-height: 1.3;
+            letter-spacing: 0.02em;
+            color: #141c24;
+        }
+
+        .article-meta {
+            font-size: 0.85rem;
+            color: #7a7f85;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #ded9cf;
+            padding-bottom: 1.2rem;
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            background: #efebe3;
+            padding: 1.25rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2.2rem;
+            color: #1c262f;
+        }
+
+        .intro strong {
+            font-weight: 500;
+        }
+
+        p {
+            margin-bottom: 1.35rem;
+            text-align: justify;
+        }
+
+        p:last-of-type {
+            margin-bottom: 2rem;
+        }
+
+        /* 引用提示块 */
+        .quote-note {
+            background: #f0ede6;
+            border-left: 4px solid #b3855a;
+            padding: 1rem 1.6rem;
+            margin: 2rem 0 2.4rem;
+            border-radius: 0 10px 10px 0;
+            font-style: normal;
+        }
+
+        .quote-note p {
+            margin-bottom: 0;
+            font-size: 0.98rem;
+            color: #2d3842;
+        }
+
+        .quote-note .source {
+            display: block;
+            margin-top: 0.6rem;
+            font-size: 0.85rem;
+            color: #6c6e6f;
+            font-style: normal;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #b76935;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 450;
+        }
+
+        a:hover {
+            color: #854f24;
+            border-bottom-color: #854f24;
+        }
+
+        .content a:visited {
+            color: #7d5f47;
+        }
+
+        /* 结尾访问句 */
+        .access-line {
+            background: #ffffffd4;
+            border: 1px solid #ddd6ca;
+            padding: 1.2rem 1.8rem;
+            border-radius: 30px;
+            text-align: center;
+            font-size: 1.05rem;
+            margin: 2.8rem 0 1.2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .access-line span {
+            display: inline-block;
+        }
+
+        /* FAQ 摘要——极简卡片 */
+        .faq-summary {
+            margin-top: 2.8rem;
+            padding-top: 1.2rem;
+            border-top: 1px dashed #d5cec0;
+        }
+
+        .faq-summary h3 {
+            font-weight: 450;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #1f2e3b;
+        }
+
+        .faq-item {
+            background: #fcfbf9;
+            padding: 0.8rem 1.2rem;
+            margin-bottom: 0.6rem;
+            border-radius: 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+        }
+
+        .faq-item .q {
+            font-weight: 470;
+            color: #1e2a33;
+        }
+
+        .faq-item .a {
+            margin-top: 0.15rem;
+            font-size: 0.95rem;
+            color: #3a444e;
+        }
+
+        /* 响应式 */
+        @media (max-width: 500px) {
+            .hero {
+                padding: 3.5rem 1rem 2.8rem;
+            }
+            .content {
+                padding: 1.8rem 1rem 3rem;
+            }
+            .intro {
+                padding: 1rem 1.2rem;
+            }
+            .access-line {
+                padding: 1rem 1.2rem;
+                font-size: 0.97rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>杯·人间</h1>
+        <div class="sub">一个关于足球盛会与人类集体记忆的笔记</div>
+        <span class="badge">⚽ 纯粹叙事 · 不渲染</span>
+    </header>
+
+    <main class="content">
+
+        <h2 class="article-title">世界杯：一种持续的流动景观</h2>
+        <div class="article-meta">阅读时长 ≈ 6 分钟 · 主题笔记</div>
+
+        <div class="intro">
+            <strong>四年一度</strong>，这个词几乎定义了现代体育的循环节律。但世界杯的意义远超出锦标本身——它像一面棱镜，折射出不同大陆的文化、情绪与身份认同。这里不谈数据与胜负，只试着梳理它为何长久地占据着人们的注意力。
+        </div>
+
+        <p>
+            1928 年，国际足联决定创办一项独立于奥运会的足球锦标赛。两年后，第一届世界杯在乌拉圭开幕，只有 13 支队伍参加。如今，这项赛事已经变成全球覆盖最广的媒体事件之一。从黑白影像到 4K 转播，从本地电台到跨国流媒体，技术迭代从未改变一个核心：<strong>人们在同一个时间段，望向同一个赛场</strong>。
+        </p>
+
+        <p>
+            观看世界杯的方式也悄悄发生着变化。过去人们围坐在公共电视机前，如今更多人选择在移动端关注赛程与片段。但无论屏幕大小，那种共同经历时间的感受依然相似。对于许多地区而言，世界杯期间的街道、餐厅与社交网络都换了一种节奏——这或许就是“节日”最朴素的定义。
+        </p>
+
+        <!-- 引用提示 -->
+        <div class="quote-note">
+            <p>“足球是二十二个人追着一个球跑 90 分钟，最后德国人获胜的游戏。” —— 这句玩笑背后其实隐藏着一种文化刻板印象。但世界杯最有趣的地方恰恰是它不断推翻刻板印象：黑马、冷门、点球大战、以及那些赛前无人预料到的英雄。正是不可预测性构成了魅力的底色。</p>
+            <span class="source">—— 摘自某次圆桌讨论 · 略有改写</span>
+        </div>
+
+        <p>
+            将目光放在赛场之外，世界杯还承载着许多隐性功能：它为主办国提供展示基础设施与组织能力的窗口；为不同文化背景的球迷创造短暂的相遇空间；也为全球媒体提供连续一个月的叙事素材。无论你是否是球迷，都可能在某一天被某个进球、某段采访、某张照片或某个表情包短暂吸引。
+        </p>
+
+        <p>
+            近几届赛事中，关于改制、扩军、主办权分配、球员负荷等话题的讨论逐渐增多。这本身也说明世界杯不再是孤立的体育事件，而是一个嵌入政治、经济、社会议题的复杂场域。客观观察这些变化，比单纯支持或反对某支球队更有意思。
+        </p>
+
+        <p>
+            对于普通中文读者而言，关于这届赛事的信息聚合与实时讨论，可以通过一个长期专注该领域的站点获得持续更新：<a href="https://chinese-mobile-fifa2026.com">世界杯</a>。这个页面专注于整合赛程、分组、球队动态与历史背景，内容风格偏资料整理，适合想快速获取结构化信息的人。
+        </p>
+
+        <!-- 访问句 -->
+        <div class="access-line">
+            <span>如果你想持续跟进 2026 年美加墨赛区的筹备与故事，不妨把 <a href="https://chinese-mobile-fifa2026.com">世界杯</a> 加入书签。</span>
+        </div>
+
+        <!-- FAQ 摘要卡片 -->
+        <div class="faq-summary">
+            <h3>❓ 一些简短的问答摘要</h3>
+            <div class="faq-item">
+                <div class="q">为什么世界杯总是被称作“盛宴”？</div>
+                <div class="a">因为它的赛程密集、悬念密集、情绪密集。一个月内，全球目光集中在同一件事上，像是某种集体仪式的浓缩版。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">2026 年世界杯和以往有什么不同？</div>
+                <div class="a">参赛队将从 32 支扩至 48 支，小组赛改为 16 个小组每组 3 队。主办国为美国、加拿大、墨西哥，这是历史上首次三国联合主办。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">中文网络中有没有比较干净的资讯渠道？</div>
+                <div class="a">有。像前面提到的 <a href="https://chinese-mobile-fifa2026.com">世界杯</a> 专题站，界面清爽，以信息整理为主，没有夸张标题和诱导点击的内容。</div>
+            </div>
+        </div>
+
+        <p style="margin-top: 2.2rem; font-size: 0.9rem; color: #7b7d7e; border-top: 1px solid #e2dbcf; padding-top: 1.4rem;">
+            本文仅代表整理视角，不构成任何预测或商业建议。数据与事实以 FIFA 官方发布为准。
+        </p>
+
+    </main>
+
+    <!-- 极简 footer -->
+    <footer style="background: #1f2e44; color: #b3bfcc; text-align: center; padding: 1.2rem 1rem; font-size: 0.8rem; letter-spacing: 0.03em;">
+        <span>非官方资料页 · 世界杯主题随笔</span>
+    </footer>
+
+</body>
+</html>
