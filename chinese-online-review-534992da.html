@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>你是否再次来到 · 世界杯信息页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #ffffff;
+      color: #1f2933;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      padding: 2rem 1.25rem;
+    }
+    .page-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    /* hero */
+    .hero {
+      padding: 3.5rem 0 2.2rem 0;
+      text-align: center;
+      border-bottom: 1px solid #eef0f2;
+    }
+    .hero h1 {
+      font-size: 2.25rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      color: #0e141b;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #3c4a57;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .visitor-note {
+      display: inline-block;
+      margin-top: 1.2rem;
+      background: #f3f6f9;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #2b3a4a;
+    }
+    /* 特点卡片区 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem 1.8rem;
+      margin: 2.8rem 0;
+    }
+    .feature-item {
+      background: #f9fafc;
+      border-radius: 20px;
+      padding: 1.5rem 1.25rem 1.25rem;
+      transition: box-shadow 0.2s;
+    }
+    .feature-item:hover {
+      box-shadow: 0 8px 22px rgba(0,0,0,0.02), 0 2px 4px rgba(0,0,0,0.04);
+    }
+    .feature-item .icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .feature-item h3 {
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin-bottom: 0.3rem;
+      color: #0b1926;
+    }
+    .feature-item p {
+      font-size: 0.93rem;
+      color: #3f4e5d;
+    }
+    /* 说明区 / 正文卡片 */
+    .context-block {
+      background: #fbfcfd;
+      border-radius: 24px;
+      padding: 2rem 2rem 2.1rem;
+      margin: 2.2rem 0;
+      border: 1px solid #eaeef3;
+    }
+    .context-block h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.01em;
+    }
+    .context-block p {
+      margin-bottom: 1rem;
+    }
+    .context-block p:last-child {
+      margin-bottom: 0;
+    }
+    .context-block a {
+      color: #115da7;
+      text-decoration: none;
+      border-bottom: 1px solid #cddbe9;
+      font-weight: 500;
+      transition: border-color 0.15s;
+    }
+    .context-block a:hover {
+      border-bottom-color: #115da7;
+    }
+    .bookmark-tip {
+      background: #f2f5f9;
+      padding: 1.1rem 1.4rem;
+      border-radius: 40px;
+      margin: 1.8rem 0 2rem;
+      font-size: 0.95rem;
+      text-align: center;
+      color: #1b2a38;
+    }
+    /* FAQ 摘要 */
+    .faq-summary {
+      margin-top: 2.5rem;
+      border-top: 1px solid #e5e9ee;
+      padding-top: 2rem;
+    }
+    .faq-summary h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+      color: #0b1926;
+    }
+    .faq-item p {
+      color: #364653;
+      font-size: 0.95rem;
+      margin-left: 0;
+    }
+    /* 底部 */
+    .footer-links {
+      margin: 3rem 0 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eef0f2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      font-size: 0.9rem;
+      color: #4f5e6c;
+    }
+    .footer-links a {
+      color: #2f4459;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .footer-links a:hover {
+      border-bottom-color: #8fa5b9;
+    }
+    .footer-meta {
+      font-size: 0.8rem;
+      color: #758694;
+      margin-top: 0.3rem;
+    }
+    @media (max-width: 540px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .context-block {
+        padding: 1.5rem;
+      }
+      .bookmark-tip {
+        padding: 0.9rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- hero 区 -->
+  <div class="hero">
+    <h1>再次回到这里</h1>
+    <p>关于 <a href="https://chinese-online-fifa2026.com" style="color:inherit; border-bottom:1px solid #b2c5d6; text-decoration:none; font-weight:500;">世界杯</a> 的信息整理与持续关注</p>
+    <div class="visitor-note">✦ 收藏 · 回访 · 认真看</div>
+  </div>
+
+  <!-- 优势区 四卡片 -->
+  <div class="feature-grid">
+    <div class="feature-item">
+      <span class="icon">📌</span>
+      <h3>固定入口</h3>
+      <p>每次回来都指向同一处 —— 省去搜索，直接找到关于世界杯的持续内容。</p>
+    </div>
+    <div class="feature-item">
+      <span class="icon">🔄</span>
+      <h3>内容更新</h3>
+      <p>页面随赛事节奏调整，并非静态档案；常看常新，适合反复回来。</p>
+    </div>
+    <div class="feature-item">
+      <span class="icon">🧭</span>
+      <h3>集中索引</h3>
+      <p>不分散注意力，从赛程背景到基础说明，都在同一框架下整理。</p>
+    </div>
+    <div class="feature-item">
+      <span class="icon">📂</span>
+      <h3>轻量浏览</h3>
+      <p>极简排版、窄正文、克制配色，对再次访问更友好。</p>
+    </div>
+  </div>
+
+  <!-- 说明区：从收藏与关注切入 -->
+  <div class="context-block">
+    <h2>为什么值得再次回来</h2>
+    <p>如果你曾访问过 <a href="https://chinese-online-fifa2026.com">世界杯</a> 相关内容，应该知道围绕这项赛事的信息会不断变化。把页面加入书签，或者记下这个地址，之后每次打开都能看到经过梳理的要点，而不是零散的消息流。</p>
+    <p>这里不追逐即时热点，而是把<strong>基础背景、简单说明、常见疑问</strong>固定在同一个位置。对于想保持关注但不想被信息轰炸的人来说，这种节奏更省力。</p>
+    <p>另外，页面结构也考虑过再次访问的场景：标题层级清晰，段落之间有留白，无论是快速扫读还是仔细查看，都不费力。</p>
+  </div>
+
+  <!-- 收藏提示块 -->
+  <div class="bookmark-tip">
+    ⭐ 你可以现在收藏此页，或记住域名 chinese-online-fifa2026.com ，方便之后回来。
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-summary">
+    <h2>常见问题 · 摘要</h2>
+    <div class="faq-item">
+      <strong>这个页面会频繁变动吗？</strong>
+      <p>内容会随赛事阶段做适度调整，但不会每天改动。适合间隔一段时间回看。</p>
+    </div>
+    <div class="faq-item">
+      <strong>我上次看到的内容还在吗？</strong>
+      <p>核心说明和基本框架会保留，但部分段落会更新以贴合当前阶段。</p>
+    </div>
+    <div class="faq-item">
+      <strong>如何快速回到这里？</strong>
+      <p>收藏本页，或在浏览器地址栏直接输入域名。也可以记住文章中指向 <a href="https://chinese-online-fifa2026.com" style="font-weight:500; border-bottom:1px solid #b8cadb;">世界杯</a> 的链接。</p>
+    </div>
+  </div>
+
+  <!-- 底部链接区 -->
+  <div class="footer-links">
+    <span><a href="https://chinese-online-fifa2026.com">世界杯</a> · 持续关注</span>
+    <span>内容说明 · 信息整理</span>
+    <span class="footer-meta">© 页面仅供学习参考 · 非官方</span>
+  </div>
+
+</div>
+</body>
+</html>
